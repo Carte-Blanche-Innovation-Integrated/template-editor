@@ -13,7 +13,7 @@ function App() {
   const [htmlDoc, setHTMLDoc] = useState<HTMLDocument>();
 
   useEffect(() => {
-    fetch('/article.txt')
+    fetch('article.txt')
       .then(res => res.text())
       .then((text) => {
         const doc = new PlainTextDocument(text);
@@ -21,7 +21,7 @@ function App() {
         return null
       });
 
-    fetch('/article-html')
+    fetch('article-html')
       .then(res => res.text())
       .then((text) => {
         const parsedhtml = domParser.parseFromString(text, 'text/html');
