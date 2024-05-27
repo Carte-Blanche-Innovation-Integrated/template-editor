@@ -1,17 +1,17 @@
-[data-kind="annotation"] {
-    padding: 5.5px 0;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: calc(2px * max(var(--level, 0), 0) + 2px);
-    text-decoration-color: theme(colors.yellow.600);
-    background-color: theme(colors.yellow.400 / 30%)!important;
+[data-kind='annotation'] {
+  padding: 5.5px 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: calc(2px * max(var(--level, 0), 0) + 2px);
+  text-decoration-color: theme(colors.yellow.600);
+  background-color: theme(colors.yellow.400 / 30%) !important;
 }
 
 .prose p,
 .prose span {
-    line-height: 30px;
+  line-height: 30px;
 }
 
 .prose * {
-    background-color: inherit;
+  background-color: inherit;
 }

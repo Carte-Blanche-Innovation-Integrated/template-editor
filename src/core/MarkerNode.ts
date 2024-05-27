@@ -29,11 +29,7 @@ export class MarkerNode<T = unknown> implements IMarkerNode<T> {
     if (m instanceof MarkerNode) {
       return m as MarkerNode<T>;
     }
-    return new MarkerNode<T>(
-      m.start, m.end,
-      (m as IMarkerNode<T>).data,
-      m.children as IMarkerNode<T>[],
-    );
+    return new MarkerNode<T>(m.start, m.end, (m as IMarkerNode<T>).data, m.children as IMarkerNode<T>[]);
   }
 
   constructor(
@@ -41,7 +37,7 @@ export class MarkerNode<T = unknown> implements IMarkerNode<T> {
     public end: number,
     public data: T,
     children: IMarkerNode<T>[] = [],
-    protected parent: MarkerNode<T> | null = null,
+    protected parent: MarkerNode<T> | null = null
   ) {
     this._key = (Math.random() + 1).toString(36).slice(2);
     this.children = children.map(MarkerNode.of);
@@ -91,10 +87,12 @@ export class MarkerNode<T = unknown> implements IMarkerNode<T> {
       // we break the newMarker for those overlapping marker
       overlappingMarkers = this.getOverlappingChildren(newMarker);
       let breakpoints = overlappingMarkers.flatMap((e) => [e.start, e.end]);
-      breakpoints = [...breakpoints, newMarker.start, newMarker.end].filter((i) => i >= newMarker.start && i <= newMarker.end);
+      breakpoints = [...breakpoints, newMarker.start, newMarker.end].filter(
+        (i) => i >= newMarker.start && i <= newMarker.end
+      );
       breakpoints = Array.from(new Set(breakpoints)).sort((a, b) => a - b);
 
-      this.addChildren(...newMarker.split(...breakpoints))
+      this.addChildren(...newMarker.split(...breakpoints));
     }
   }
 
@@ -155,7 +153,9 @@ export class MarkerNode<T = unknown> implements IMarkerNode<T> {
    * @param marker - The child marker node to remove.
    */
   removeChild(marker: MarkerNode<T>) {
-    this.children = this.children.filter((child) => !MarkerNode.is(child as MarkerNode, marker as MarkerNode));
+    this.children = this.children.filter(
+      (child) => !MarkerNode.is(child as MarkerNode, marker as MarkerNode)
+    );
   }
 
   /**
@@ -171,7 +171,7 @@ export class MarkerNode<T = unknown> implements IMarkerNode<T> {
       const newMarker = new MarkerNode(start, end, this.data, [], this.parent);
 
       const newChildren = this.children
-        .filter((c) => newMarker.getOverlapSize(c) > 0 )
+        .filter((c) => newMarker.getOverlapSize(c) > 0)
         .flatMap((c) => {
           if (newMarker.contains(c)) {
             return [c];
@@ -180,8 +180,7 @@ export class MarkerNode<T = unknown> implements IMarkerNode<T> {
           return c.split(start, end);
         });
 
-
-      newMarker.addChildren(...newChildren)
+      newMarker.addChildren(...newChildren);
       newMarkers.push(newMarker);
     }
 

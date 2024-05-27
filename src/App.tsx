@@ -1,11 +1,12 @@
-import {useEffect, useState} from "react";
-import {HTMLDocument, PlainTextDocument} from "./core/Documents.ts";
-import {TextHighlighter} from "./components/TextHighlighter.tsx";
-import {ExclamationTriangleIcon} from '@heroicons/react/24/solid'
-import clsx from "clsx";
+import clsx from 'clsx';
+import {useEffect, useState} from 'react';
+
+import {ExclamationTriangleIcon} from '@heroicons/react/24/solid';
+
+import {TextHighlighter} from './components/TextHighlighter.tsx';
+import {HTMLDocument, PlainTextDocument} from './core/Documents.ts';
 
 const domParser = new DOMParser();
-
 
 function App() {
   const [tab, setTab] = useState('plain');
@@ -14,27 +15,30 @@ function App() {
 
   useEffect(() => {
     fetch('article.txt')
-      .then(res => res.text())
+      .then((res) => res.text())
       .then((text) => {
         const doc = new PlainTextDocument(text);
         setTextDoc(doc);
-        return null
+        return null;
       });
 
     fetch('article-html')
-      .then(res => res.text())
+      .then((res) => res.text())
       .then((text) => {
         const parsedhtml = domParser.parseFromString(text, 'text/html');
         console.log(parsedhtml.body);
         const doc = new HTMLDocument(parsedhtml.body);
         setHTMLDoc(doc);
-        return null
+        return null;
       });
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <nav className="flex space-x-2 justify-end mb-4" aria-label="Tabs">
+    <div className="mx-auto max-w-2xl">
+      <nav
+        className="mb-4 flex justify-end space-x-2"
+        aria-label="Tabs"
+      >
         <button
           className={clsx(
             tab === 'plain' ? 'bg-gray-200 text-gray-800' : 'text-gray-600 hover:text-gray-800',
@@ -54,20 +58,21 @@ function App() {
           Rich Text
         </button>
       </nav>
-      {textDoc && tab === 'plain' && <TextHighlighter doc={textDoc}/>}
+      {textDoc && tab === 'plain' && <TextHighlighter doc={textDoc} />}
       {tab === 'rich' && (
         <>
-          <div className="flex bg-yellow-50 ring-1 ring-yellow-400 p-4 rounded mb-2">
-            <ExclamationTriangleIcon className="flex-shrink-0 h-5 w-5 text-yellow-400" aria-hidden="true"/>
-            <p className="ml-3 text-sm text-yellow-700">
-              Rich text highlighting is experimental.
-            </p>
+          <div className="mb-2 flex rounded bg-yellow-50 p-4 ring-1 ring-yellow-400">
+            <ExclamationTriangleIcon
+              className="h-5 w-5 flex-shrink-0 text-yellow-400"
+              aria-hidden="true"
+            />
+            <p className="ml-3 text-sm text-yellow-700">Rich text highlighting is experimental.</p>
           </div>
-          {htmlDoc && <TextHighlighter doc={htmlDoc}/>}
+          {htmlDoc && <TextHighlighter doc={htmlDoc} />}
         </>
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
