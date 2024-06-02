@@ -1,17 +1,28 @@
-[data-kind='annotation'] {
-  padding: 5.5px 0;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: calc(2px * max(var(--level, 0), 0) + 2px);
-  text-decoration-color: theme(colors.yellow.600);
-  background-color: theme(colors.yellow.400 / 30%) !important;
+.rich-text-editor {
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.prose p,
-.prose span {
-  line-height: 30px;
+.rich-text-editor .ProseMirror p.is-editor-empty:first-of-type::before {
+  content: attr(data-placeholder);
+  pointer-events: none;
+  user-select: none;
+  float: left;
+  height: 0;
+
+  @apply text-gray-500;
 }
 
-.prose * {
-  background-color: inherit;
+.rich-text-editor .ProseMirror img {
+  height: auto;
+  max-width: 100%;
+}
+
+.rich-text-editor .ProseMirror img.ProseMirror-selectednode {
+  @apply outline outline-2 outline-offset-2 outline-gray-800;
+}
+
+.rich-text-editor [data-type='variable'] {
+  font-family: 'IBM Plex Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 90%;
+  @apply inline-flex items-center rounded-md bg-gray-50 px-1.5 py-0.5 font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10;
 }

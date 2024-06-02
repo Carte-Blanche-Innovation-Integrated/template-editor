@@ -74,7 +74,7 @@ The project is structured as follows:
    npm run lint
    ```
 
-5. **Prettier**
+3. **Prettier**
 
    Format the code using Prettier.
 
@@ -89,11 +89,9 @@ The project is structured as follows:
 The `MarkerNode` class is used to manage text selection and annotations. It contains methods to add, remove, and
 manipulate child nodes that represent highlighted text segments.
 
-
 ### [`Documents.tsx`](https://github.com/Carte-Blanche-Innovation-Integrated/text-highlighter/blob/main/src/core/Documents.ts)
 
 The `Documents.ts` file contains abstract and concrete classes to represent plain text and HTML documents.
-
 
 ### [`TextHighlighter.tsx`](https://github.com/Carte-Blanche-Innovation-Integrated/text-highlighter/blob/main/src/components/TextHighlighter.tsx)
 
