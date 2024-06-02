@@ -4,11 +4,11 @@ import {forwardRef, useEffect, useImperativeHandle, useState} from 'react';
 import {VariableIcon} from '@heroicons/react/20/solid';
 import type {SuggestionKeyDownProps, SuggestionProps} from '@tiptap/suggestion';
 
-export interface MentionListRef {
+export interface VariablesListRef {
   onKeyDown: (props: SuggestionKeyDownProps) => boolean;
 }
 
-export default forwardRef<MentionListRef, SuggestionProps>(function MentionList(props, ref) {
+export default forwardRef<VariablesListRef, SuggestionProps>(function VariablesList(props, ref) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const selectItem = (index: number) => {

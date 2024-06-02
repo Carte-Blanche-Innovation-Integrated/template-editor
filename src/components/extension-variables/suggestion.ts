@@ -3,7 +3,7 @@ import {ReactRenderer} from '@tiptap/react';
 import {type SuggestionOptions} from '@tiptap/suggestion';
 import tippy, {GetReferenceClientRect, Instance} from 'tippy.js';
 
-import MentionList, {MentionListRef} from './MentionList.tsx';
+import MentionList, {VariablesListRef} from './VariablesList.tsx';
 
 const VariablesPluginKey = new PluginKey('Variables');
 
@@ -28,7 +28,7 @@ export default {
       .slice(0, 5);
   },
   render: () => {
-    let component: ReactRenderer<MentionListRef>;
+    let component: ReactRenderer<VariablesListRef>;
     let popup: Instance[];
 
     return {

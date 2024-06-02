@@ -1,43 +1,56 @@
-# React Text Highlighter Component
+# Template Editor
 
 ## Overview
 
-This project showcases a React component that allows users to select and highlight text using their mouse pointer. The
-component supports both plain text and rich text formats. The project is built using modern web technologies including
-React, TailwindCSS, Vite, TypeScript, ESLint, and Prettier.
+Template Editor is a React-based project that provides a powerful text editor with variable insertion capabilities.
+The editor is built with the TipTap editor, allowing users to insert predefined variables into their text.
+This is particularly useful for creating templates where certain fields need to be dynamically populated.
+The project utilizes modern front-end technologies including React, TypeScript, TailwindCSS, Vite, Prettier, and ESLint.
 
-[Live Preview](https://carte-blanche-innovation-integrated.github.io/text-highlighter/)
+[Live Preview](https://carte-blanche-innovation-integrated.github.io/template-editor/)
 
 ## Features
 
-- Highlight text in both plain text and rich text formats.
-- Display selected text with custom annotations.
-- Efficiently manage text selections and their respective annotations.
+- **Rich Text Editing**: Powered by TipTap's `StarterKit` for comprehensive text editing capabilities.
+- **Variable Insertion**: Easily insert predefined variables using a custom extension.
+- **Suggestions Dropdown**: A suggestion dropdown that appears when typing a variable trigger character (`$`), showing possible variable options.
+- **Customizable**: Extend and customize the editor to fit various use cases and requirements.
 
 ## Technologies Used
 
-- **React**: For building the user interface.
-- **TailwindCSS**: For styling the application.
-- **Vite**: For fast and optimized development.
-- **TypeScript**: For type-safe JavaScript development.
-- **ESLint**: For linting and ensuring code quality.
-- **Prettier**: For code formatting.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A statically typed superset of JavaScript.
+- **TailwindCSS**: A utility-first CSS framework.
+- **Vite**: A fast and optimized build tool.
+- **TipTap**: A headless editor framework for building rich text editors.
+- **Prettier**: A code formatter to ensure a consistent code style.
+- **ESLint**: A tool for identifying and fixing linting issues in JavaScript/TypeScript code.
 
 ## Project Structure
 
 The project is structured as follows:
 
 ```
-├── src
-│   ├── components
-│   │   └── TextHighlighter.tsx
-│   ├── core
-│   │   ├── Documents.ts
-│   │   └── MarkerNode.ts
-│   └── App.tsx
-├── package.json
-└── vite.config.ts
+src/
+├── components/
+│   ├── extension-variables/
+│   │   ├── index.ts
+│   │   ├── suggestion.ts
+│   │   └── VariablesList.tsx
+│   ├── Editor.tsx
+│   └── styles.css
+├── App.tsx
+├── index.tsx
+├── main.tsx
+└── vite-env.d.ts
 ```
+
+### Key Files
+
+- **extension-variables/index.ts**: Defines the `VariableNode` extension for TipTap.
+- **extension-variables/suggestion.ts**: Manages the suggestion plugin and its behavior.
+- **extension-variables/VariablesList.tsx**: React component for rendering the suggestion dropdown list.
+- **components/Editor.tsx**: Main editor component utilizing TipTap and the variable extension.
 
 ## Installation
 
@@ -81,23 +94,7 @@ The project is structured as follows:
    ```bash
    npm run prettier
    ```
-
-## Code Explanation
-
-### [`MarkerNode.tsx`](https://github.com/Carte-Blanche-Innovation-Integrated/text-highlighter/blob/main/src/core/MarkerNode.ts)
-
-The `MarkerNode` class is used to manage text selection and annotations. It contains methods to add, remove, and
-manipulate child nodes that represent highlighted text segments.
-
-### [`Documents.tsx`](https://github.com/Carte-Blanche-Innovation-Integrated/text-highlighter/blob/main/src/core/Documents.ts)
-
-The `Documents.ts` file contains abstract and concrete classes to represent plain text and HTML documents.
-
-### [`TextHighlighter.tsx`](https://github.com/Carte-Blanche-Innovation-Integrated/text-highlighter/blob/main/src/components/TextHighlighter.tsx)
-
-The `TextHighlighter` component is the core UI component that allows users to select and highlight text. It manages
-user interactions and updates the document tree with selected text ranges.
-
+   
 ## Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
