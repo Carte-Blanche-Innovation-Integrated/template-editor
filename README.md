@@ -57,8 +57,8 @@ src/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Carte-Blanche-Innovation-Integrated/text-highlighter.git
-   cd text-highlighter
+   git clone https://github.com/Carte-Blanche-Innovation-Integrated/template-editor.git
+   cd template-editor
    ```
 
 2. **Install dependencies**
